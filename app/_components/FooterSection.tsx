@@ -13,7 +13,7 @@ export function FooterSection() {
         const next = prev + 5
         if (next >= 100) {
           clearInterval(holdIntervalRef.current!)
-          window.open('mailto:contact@echaeroun.com?subject=Project%20Inquiry')
+          window.open('mailto:contact@ichae.kr?subject=Project%20Inquiry')
           return 0
         }
         return next
@@ -86,7 +86,7 @@ export function FooterSection() {
           {/* Direct Links */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:contact@echaeroun.com"
+              href="mailto:contact@ichae.kr"
               className="px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-sm uppercase tracking-widest font-light"
             >
               Email
@@ -117,7 +117,7 @@ export function FooterSection() {
 
       {/* Footer */}
       <div className="absolute bottom-8 left-0 right-0 text-center text-gray-600 text-xs uppercase tracking-widest">
-        <p>© 2026 ECHAEROUN. All rights reserved.</p>
+        <p>© 2026 ICHAE. All rights reserved.</p>
       </div>
     </section>
   )
