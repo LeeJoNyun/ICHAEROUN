@@ -30,6 +30,40 @@ export const ADDON_PRICING = {
   seo: 300000,         // SEO 최적화
 } as const
 
+// 추가 기능 미리보기
+export const ADDON_PREVIEWS = {
+  payment: {
+    title: '결제 시스템 연동',
+    description: '안전한 온라인 결제 기능을 통해 고객이 직접 상품을 구매할 수 있습니다.',
+    image: 'https://images.unsplash.com/photo-1556742212-5b321f3c261d?w=600&h=400&fit=crop',
+  },
+  userSystem: {
+    title: '회원 시스템',
+    description: '사용자 가입, 로그인, 마이페이지 등 회원 관리 기능을 제공합니다.',
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop',
+  },
+  admin: {
+    title: '관리자 대시보드',
+    description: '상품, 주문, 사용자를 한눈에 관리할 수 있는 전용 관리자 페이지입니다.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+  },
+  apiIntegration: {
+    title: 'API 연동',
+    description: '소셜 로그인(카카오, 네이버), 배송 조회 등 외부 서비스와 연동됩니다.',
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop',
+  },
+  realTimeChat: {
+    title: '실시간 채팅',
+    description: '고객상담, 실시간 메시지 기능으로 즉각적인 소통이 가능합니다.',
+    image: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=400&fit=crop',
+  },
+  seo: {
+    title: 'SEO 최적화',
+    description: '구글, 네이버 검색에서 상위노출되도록 최적화됩니다.',
+    image: 'https://images.unsplash.com/photo-1460925895917-aae19ba36c71?w=600&h=400&fit=crop',
+  },
+} as const
+
 // 프로젝트 타입 (기본 스코프)
 export const PROJECT_TYPES = {
   landing: { name: 'Landing Page', pages: 3, type: 'basic' },
