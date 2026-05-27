@@ -19,6 +19,50 @@
   }
 }
 
+/* Section numbers styling */
+.section-number {
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Drag to explore styles */
+.drag-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.drag-hint svg {
+  width: 1.5rem;
+  height: 1rem;
+  animation: slide 1.5s ease-in-out infinite;
+}
+
+@keyframes slide {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0.5rem);
+  }
+}
+
 /* 기본 마우스 포인터 활성화 */
 
 html {

@@ -381,7 +381,7 @@ export default function ForYouBrowPage() {
                   className="absolute inset-0 h-full w-full object-cover transition group-hover:scale-[1.02]"
                 />
                 <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-background/85 px-5 py-3 text-xs tracking-wide text-foreground backdrop-blur-sm">
-                  <span>하계역 1번 출구 · 도보 450m</span>
+                  <span>강남역 3번 출구 · 도보 5분</span>
                   <span className="text-muted group-hover:text-foreground">
                     네이버 지도 열기 →
                   </span>
@@ -412,7 +412,7 @@ export default function ForYouBrowPage() {
                   지도 앱으로 보기 →
                 </div>
                 <div className="relative mt-1 text-xs text-muted/80">
-                  하계역 1번 출구 · 도보 450m
+                  강남역 3번 출구 · 도보 5분
                 </div>
               </>
             )}
@@ -499,7 +499,7 @@ export default function ForYouBrowPage() {
                 샘플 빌딩 5F
                 <br />
                 <span className="text-xs text-background/60">
-                  하계역 1번 출구 · 450m
+                  강남역 3번 출구 · 도보 5분
                 </span>
               </p>
               <div className="mt-6 text-[10px] uppercase tracking-[0.3em] text-background/50">

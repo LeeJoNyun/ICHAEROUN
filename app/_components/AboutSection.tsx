@@ -18,20 +18,8 @@ export function AboutSection() {
 
     if (textRef.current) {
       textRef.current.innerHTML = words
-        .map((word) => `<span class="about-word" style="display: inline-block; margin-right: 0.5em; filter: blur(10px); opacity: 0;">${word}</span>`)
+        .map((word) => `<span class="about-word" style="display: inline-block; margin-right: 0.5em;">${word}</span>`)
         .join('')
-
-      // 스크롤 트리거
-      gsap.to('.about-word', {
-        filter: 'blur(0px)',
-        opacity: 1,
-        stagger: 0.05,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      })
     }
 
     // 숫자 카운트
@@ -42,18 +30,14 @@ export function AboutSection() {
         textContent: target,
         duration: 2,
         snap: { textContent: 1 },
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
       })
     })
   }, [])
 
   return (
     <section ref={sectionRef} className="relative min-h-screen w-full flex items-center justify-center bg-black py-20">
-      <div className="max-w-4xl px-6 relative z-10">
+      <div className="section-number">02</div>
+      <div className="w-full max-w-4xl mx-auto px-6 relative z-10">
         <h2 className="text-3xl md:text-5xl font-light text-white mb-12 tracking-tight">About</h2>
 
         <div

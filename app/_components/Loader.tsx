@@ -25,6 +25,7 @@ export function Loader() {
         '-=0.5'
       )
       .then(() => {
+        window.dispatchEvent(new Event('loaderComplete'))
         setIsLoaded(true)
       })
   }, [])

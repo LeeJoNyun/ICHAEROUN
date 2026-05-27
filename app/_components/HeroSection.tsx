@@ -2,77 +2,118 @@
 
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
   const orbRef = useRef<HTMLDivElement>(null)
-  const textRef = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const particlesRef = useRef<any[]>([])
+  const mouseRef = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
-    // 글자 단위 스플릿
-    const text = 'JI LEE'
-    const chars = text.split('')
+    // Canvas 파티클 설정
+    const canvas = canvasRef.current
+    if (canvas) {
+      const ctx = canvas.getContext('2d')
+      if (!ctx) return
 
-    if (textRef.current) {
-      textRef.current.innerHTML = chars
-        .map((char) => `<span class="hero-char" style="display: inline-block; overflow: hidden;">
-          <span class="hero-char-inner" style="display: inline-block; translate: 0 100%;">${char === ' ' ? '&nbsp;' : char}</span>
-        </span>`)
-        .join('')
-
-      // 글자 등장 애니메이션
-      gsap.to('.hero-char-inner', {
-        yPercent: 0,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: 'power3.out',
-      })
-    }
-
-    // 마우스 따라 움직이는 orb
-    const handleMouseMove = (e: MouseEvent) => {
-      if (orbRef.current) {
-        const x = (e.clientX / window.innerWidth - 0.5) * 40
-        const y = (e.clientY / window.innerHeight - 0.5) * 40
-
-        gsap.to(orbRef.current, {
-          x,
-          y,
-          duration: 1,
-          overwrite: 'auto',
-        })
+      const resizeCanvas = () => {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
       }
-    }
+      resizeCanvas()
 
-    window.addEventListener('mousemove', handleMouseMove)
+      class Particle {
+        x: number
+        y: number
+        vx: number
+        vy: number
+        life: number
+        size: number
 
-    // 스크롤 연동 parallax + fade
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      onUpdate: (self) => {
-        if (textRef.current) {
-          gsap.to(textRef.current, {
-            yPercent: self.getVelocity() * 0.1,
-            opacity: 1 - self.progress * 0.3,
-            overwrite: 'auto',
-          })
+        constructor(x: number, y: number) {
+          this.x = x
+          this.y = y
+          this.vx = (Math.random() - 0.5) * 2
+          this.vy = (Math.random() - 0.5) * 2
+          this.life = 1
+          this.size = Math.random() * 2 + 1
         }
-      },
-    })
 
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
+        update() {
+          this.x += this.vx
+          this.y += this.vy
+          this.life -= 0.01
+          this.vy += 0.05
+        }
+
+        draw(ctx: CanvasRenderingContext2D) {
+          ctx.fillStyle = `rgba(255, 255, 255, ${this.life * 0.5})`
+          ctx.beginPath()
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+          ctx.fill()
+        }
+      }
+
+      const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        // 파티클 생성 (마우스 위치 근처)
+        if (Math.random() > 0.85) {
+          particlesRef.current.push(
+            new Particle(
+              mouseRef.current.x + (Math.random() - 0.5) * 50,
+              mouseRef.current.y + (Math.random() - 0.5) * 50
+            )
+          )
+        }
+
+        // 파티클 업데이트 및 그리기
+        particlesRef.current = particlesRef.current.filter((p) => {
+          p.update()
+          p.draw(ctx)
+          return p.life > 0
+        })
+
+        requestAnimationFrame(animate)
+      }
+
+      animate()
+      window.addEventListener('resize', resizeCanvas)
+      return () => window.removeEventListener('resize', resizeCanvas)
     }
   }, [])
 
+  // 마우스 따라 움직이는 orb + 파티클 생성
+  const handleMouseMove = (e: MouseEvent) => {
+    mouseRef.current = { x: e.clientX, y: e.clientY }
+
+    if (orbRef.current) {
+      const x = (e.clientX / window.innerWidth - 0.5) * 40
+      const y = (e.clientY / window.innerHeight - 0.5) * 40
+
+      gsap.to(orbRef.current, {
+        x,
+        y,
+        duration: 1,
+        overwrite: 'auto',
+      })
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black"
-    >
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+      {/* Canvas Particle Background */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 pointer-events-none"
+        style={{ opacity: 0.6 }}
+      />
+
       {/* Grid Background */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -97,16 +138,22 @@ export function HeroSection() {
         }}
       />
 
-      {/* Text */}
+      {/* Content */}
       <div className="relative z-10 text-center">
-        <div
-          ref={textRef}
-          className="text-8xl md:text-9xl font-light text-white tracking-tighter leading-none"
-          style={{
-            fontFamily: 'var(--font-geist-sans)',
-          }}
-        />
-        <p className="mt-8 text-sm text-gray-400 tracking-widest uppercase">Full Stack Developer</p>
+        <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter mb-6" style={{ fontFamily: 'var(--font-geist-sans)' }}>
+          ECHAEROUN
+        </h1>
+        <p className="text-sm md:text-base text-gray-400 tracking-[0.2em] uppercase mb-16">이채로운 · 디지털 경험을 만드는 곳</p>
+        <p className="text-xl md:text-3xl font-light text-white mb-12 max-w-3xl mx-auto leading-relaxed">
+          We Build Digital Experiences That Convert
+        </p>
+
+        <button
+          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          className="px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-sm uppercase tracking-widest font-light"
+        >
+          Start A Project →
+        </button>
       </div>
 
       {/* Scroll Indicator */}
