@@ -467,7 +467,7 @@ export default function ForYouBrowPage() {
                 12년차 대표원장의 1:1 프라이빗 예약제 브로우샵.
               </p>
               <a
-                href="https://www.instagram.com/for_u_brow"
+                href="https://www.instagram.com/sample_brow"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="For U Brow 인스타그램 @sample_brow"
@@ -524,7 +524,7 @@ export default function ForYouBrowPage() {
                 </li>
                 <li>
                   <a
-                    href="https://www.instagram.com/for_u_brow"
+                    href="https://www.instagram.com/sample_brow"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:underline"
