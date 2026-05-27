@@ -86,7 +86,7 @@ export default function ForYouBrowPage() {
             href="tel:010-1234-5678"
             className="hidden sm:inline text-sm text-muted hover:text-foreground transition"
           >
-            010 · 9451 · 6583
+            010 · 1234 · 5678
           </a>
         </div>
       </header>
@@ -360,7 +360,7 @@ export default function ForYouBrowPage() {
                     href="tel:010-1234-5678"
                     className="underline-offset-4 hover:underline"
                   >
-                    010 · 9451 · 6583
+                    010 · 1234 · 5678
                   </a>
                 </dd>
               </div>
