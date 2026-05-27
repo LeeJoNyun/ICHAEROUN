@@ -10,7 +10,7 @@ export function BrowThumbnail() {
         </linearGradient>
       </defs>
       {/* Screen Frame */}
-      <rect x="20" y="20" width="260" height="160" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+      <rect x="20" y="20" width="260" height="160" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
 
       {/* Header */}
       <rect x="20" y="20" width="260" height="30" fill="rgba(217,119,6,0.3)" />
@@ -40,10 +40,10 @@ export function ModoThumbnail() {
         </linearGradient>
       </defs>
       {/* Screen Frame */}
-      <rect x="20" y="20" width="260" height="160" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+      <rect x="20" y="20" width="260" height="160" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
 
       {/* Navigation */}
-      <line x1="20" y1="45" x2="280" y2="45" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+      <line x1="20" y1="45" x2="280" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
       <circle cx="40" cy="32" r="4" fill="rgba(255,255,255,0.3)" />
       <circle cx="60" cy="32" r="4" fill="rgba(255,255,255,0.3)" />
       <circle cx="80" cy="32" r="4" fill="rgba(255,255,255,0.3)" />
@@ -73,7 +73,7 @@ export function CoreAdminThumbnail() {
         </linearGradient>
       </defs>
       {/* Screen Frame */}
-      <rect x="20" y="20" width="260" height="160" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+      <rect x="20" y="20" width="260" height="160" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
 
       {/* Sidebar */}
       <rect x="20" y="20" width="50" height="160" fill="rgba(79,70,229,0.15)" stroke="rgba(79,70,229,0.3)" strokeWidth="1" />
@@ -111,7 +111,7 @@ export function BloomThumbnail() {
         </linearGradient>
       </defs>
       {/* Screen Frame */}
-      <rect x="20" y="20" width="260" height="160" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+      <rect x="20" y="20" width="260" height="160" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
 
       {/* Calendar Header */}
       <line x1="20" y1="50" x2="280" y2="50" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
@@ -140,7 +140,7 @@ export function NovaTechThumbnail() {
   return (
     <svg viewBox="0 0 300 200" className="w-full h-full">
       {/* Screen Frame */}
-      <rect x="20" y="20" width="260" height="160" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+      <rect x="20" y="20" width="260" height="160" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
 
       {/* Data Visualization */}
       <line x1="30" y1="140" x2="35" y2="100" stroke="rgba(6,182,212,0.6)" strokeWidth="2" />

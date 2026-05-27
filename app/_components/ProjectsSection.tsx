@@ -125,7 +125,7 @@ export function ProjectsSection() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${work.color}`} />
 
                 {/* Thumbnail Preview */}
-                <div className="absolute top-8 right-8 w-32 h-40 opacity-40 group-hover:opacity-60 transition-opacity z-10">
+                <div className="absolute top-8 right-8 w-40 h-48 opacity-60 group-hover:opacity-100 transition-opacity z-10">
                   <ThumbnailComponent />
                 </div>
 
