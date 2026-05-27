@@ -102,9 +102,9 @@ export default function SampleDetailPage() {
         </div>
 
         {/* CTA 버튼 */}
-        <div className="space-y-4 mb-16">
+        <div className="mb-16">
           <Link href={`/samples/${sample.id}/preview`}>
-            <button className="w-full py-4 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition">
+            <button className="w-full py-4 mb-6 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition">
               미리보기
             </button>
           </Link>

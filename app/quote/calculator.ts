@@ -40,7 +40,7 @@ export function calculateQuote(params: QuoteParams): QuoteResult {
   }
 
   // 기본 페이지 수
-  let totalPages = projectType.pages
+  let totalPages: number = projectType.pages
   if (params.projectType === 'custom') {
     totalPages = Math.max(5, params.additionalPages)
   } else {

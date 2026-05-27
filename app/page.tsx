@@ -2,6 +2,7 @@ import { Loader } from './_components/Loader'
 import { HeroSection } from './_components/HeroSection'
 import { ServicesSection } from './_components/ServicesSection'
 import { ProjectsSection } from './_components/ProjectsSection'
+import { QuoteCtaSection } from './_components/QuoteCtaSection'
 import { FooterSection } from './_components/FooterSection'
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <div id="works">
         <ProjectsSection />
       </div>
+      <QuoteCtaSection />
       <div id="contact">
         <FooterSection />
       </div>

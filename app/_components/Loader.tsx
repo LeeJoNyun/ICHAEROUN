@@ -13,6 +13,7 @@ export function Loader() {
     if (hasVisited) {
       setShouldShow(false)
       setIsLoaded(true)
+      window.dispatchEvent(new Event('loaderComplete'))
       return
     }
 
