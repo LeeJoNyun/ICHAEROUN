@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { calculateQuote, formatPrice, QuoteParams, QuoteResult } from './calculator'
-import { PROJECT_TYPES, ADDON_PRICING, ADDON_PREVIEWS, SAMPLES } from './constants'
+import { PROJECT_TYPES, ADDON_PRICING, SAMPLES } from './constants'
 import { QuoteDisplay } from './QuoteDisplay'
 import Link from 'next/link'
 
@@ -178,34 +178,6 @@ export function QuoteForm() {
             ))}
           </div>
         </div>
-
-        {/* 추가 기능 미리보기 */}
-        {params.addons.length > 0 && (
-          <div className="space-y-4">
-            <label className="block text-sm font-medium text-white">선택된 기능 미리보기</label>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {params.addons.map(addonKey => {
-                const preview = ADDON_PREVIEWS[addonKey as keyof typeof ADDON_PREVIEWS]
-                return (
-                  <div key={addonKey} className="overflow-hidden rounded-lg border border-white/20 hover:border-white/40 transition">
-                    <div className="relative aspect-video overflow-hidden bg-white/5">
-                      <img
-                        src={preview.image}
-                        alt={preview.title}
-                        className="w-full h-full object-cover hover:scale-105 transition duration-300"
-                      />
-                      <div className="absolute inset-0 bg-black/50" />
-                      <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-                        <h4 className="text-white font-semibold text-sm mb-2">{preview.title}</h4>
-                        <p className="text-white/80 text-xs">{preview.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        )}
 
         {/* 샘플 갤러리 */}
         {params.projectType !== 'custom' && (
