@@ -49,11 +49,11 @@ const WORKS = [
   {
     id: 5,
     number: '05',
-    title: 'NovaTech',
+    title: 'ICHAE',
     category: 'IT · 스타트업',
-    description: 'AI 소프트웨어 소개 사이트',
+    description: '이채테크 회사 소개 페이지',
     color: 'from-cyan-900/40 to-blue-900/40',
-    href: '/nova-tech',
+    href: '/ichae',
     screenshot: '/screenshots/5-nova-tech.png',
   },
 ]

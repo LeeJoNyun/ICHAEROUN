@@ -155,9 +155,9 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 text-center">
         <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter mb-6" style={{ fontFamily: 'var(--font-geist-sans)' }}>
-          ECHAEROUN
+          ICHAE
         </h1>
-        <p className="text-sm md:text-base text-gray-400 tracking-[0.2em] uppercase mb-16">이채로운 · 디지털 경험을 만드는 곳</p>
+        <p className="text-sm md:text-base text-gray-400 tracking-[0.2em] uppercase mb-16">이채 · 디지털 경험을 만드는 곳</p>
         <p className="text-xl md:text-3xl font-light text-white mb-12 max-w-3xl mx-auto leading-relaxed">
           We Build Digital Experiences That Convert
         </p>
