@@ -62,8 +62,32 @@ export function ProjectsSection() {
   const sliderRef = useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isHovering, setIsHovering] = useState(false)
   const startXRef = useRef(0)
   const scrollLeftRef = useRef(0)
+  const autoplayIntervalRef = useRef<NodeJS.Timeout | null>(null)
+
+  const resetAutoplay = () => {
+    if (autoplayIntervalRef.current) {
+      clearInterval(autoplayIntervalRef.current)
+    }
+
+    if (isHovering || isDragging) return
+
+    autoplayIntervalRef.current = setInterval(() => {
+      if (!sliderRef.current) return
+      const slider = sliderRef.current
+      const cardWidth = slider.offsetWidth + 32
+      const isAtEnd = currentSlide >= WORKS.length - 1
+
+      if (isAtEnd) {
+        slider.scrollTo({ left: 0, behavior: 'smooth' })
+      } else {
+        const newScrollLeft = slider.scrollLeft + cardWidth
+        slider.scrollTo({ left: newScrollLeft, behavior: 'smooth' })
+      }
+    }, 5000)
+  }
 
   const handleNav = (direction: 'prev' | 'next') => {
     if (!sliderRef.current) return
@@ -73,6 +97,7 @@ export function ProjectsSection() {
       ? slider.scrollLeft + cardWidth
       : slider.scrollLeft - cardWidth
     slider.scrollTo({ left: newScrollLeft, behavior: 'smooth' })
+    resetAutoplay()
   }
 
   useEffect(() => {
@@ -90,6 +115,9 @@ export function ProjectsSection() {
       startXRef.current = e.pageX - slider.offsetLeft
       scrollLeftRef.current = slider.scrollLeft
       slider.style.cursor = 'grabbing'
+      if (autoplayIntervalRef.current) {
+        clearInterval(autoplayIntervalRef.current)
+      }
     }
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -103,20 +131,42 @@ export function ProjectsSection() {
     const handleMouseUp = () => {
       setIsDragging(false)
       slider.style.cursor = 'grab'
+      resetAutoplay()
+    }
+
+    const handleMouseEnter = () => {
+      setIsHovering(true)
+      if (autoplayIntervalRef.current) {
+        clearInterval(autoplayIntervalRef.current)
+      }
+    }
+
+    const handleMouseLeave = () => {
+      setIsHovering(false)
+      resetAutoplay()
     }
 
     slider.addEventListener('scroll', handleScroll)
     slider.addEventListener('mousedown', handleMouseDown)
+    slider.addEventListener('mouseenter', handleMouseEnter)
+    slider.addEventListener('mouseleave', handleMouseLeave)
     window.addEventListener('mousemove', handleMouseMove)
     window.addEventListener('mouseup', handleMouseUp)
+
+    resetAutoplay()
 
     return () => {
       slider.removeEventListener('scroll', handleScroll)
       slider.removeEventListener('mousedown', handleMouseDown)
+      slider.removeEventListener('mouseenter', handleMouseEnter)
+      slider.removeEventListener('mouseleave', handleMouseLeave)
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseup', handleMouseUp)
+      if (autoplayIntervalRef.current) {
+        clearInterval(autoplayIntervalRef.current)
+      }
     }
-  }, [isDragging])
+  }, [isDragging, isHovering, currentSlide])
 
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-center bg-black py-20">
