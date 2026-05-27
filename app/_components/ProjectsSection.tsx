@@ -131,7 +131,7 @@ export function ProjectsSection() {
                 <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/70 to-black/60 group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/50 transition-all duration-300 z-0" />
 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 flex flex-col justify-between p-12 z-10">
+                <div className="absolute inset-0 flex flex-col justify-between p-12 z-10 overflow-hidden">
                   {/* Top Section */}
                   <div>
                     <div className="text-white/60 text-xs uppercase tracking-widest font-light mb-4">
