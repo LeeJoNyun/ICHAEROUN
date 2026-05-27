@@ -5,8 +5,19 @@ import gsap from 'gsap'
 
 export function Loader() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [shouldShow, setShouldShow] = useState(true)
 
   useEffect(() => {
+    const hasVisited = sessionStorage.getItem('hasVisited')
+
+    if (hasVisited) {
+      setShouldShow(false)
+      setIsLoaded(true)
+      return
+    }
+
+    sessionStorage.setItem('hasVisited', 'true')
+
     const tl = gsap.timeline()
 
     tl.to('.loader-number', {
@@ -31,6 +42,7 @@ export function Loader() {
   }, [])
 
   if (isLoaded) return null
+  if (!shouldShow) return null
 
   return (
     <div className="loader-overlay fixed inset-0 bg-black z-[10000] flex items-center justify-center">
