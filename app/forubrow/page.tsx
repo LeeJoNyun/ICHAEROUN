@@ -57,7 +57,7 @@ const SERVICES = [
 const RATING = 4.9;
 const REVIEW_COUNT = 47;
 
-const NAVER_PLACE_ID = "2064490461";
+const NAVER_PLACE_ID = "0000000000";
 function getNaverReviewUrl() {
   const d = new Date();
   const pad = (n: number) => String(n).padStart(2, "0");
@@ -83,7 +83,7 @@ export default function ForYouBrowPage() {
             />
           </a>
           <a
-            href="tel:010-9451-6583"
+            href="tel:010-1234-5678"
             className="hidden sm:inline text-sm text-muted hover:text-foreground transition"
           >
             010 · 9451 · 6583
@@ -114,7 +114,7 @@ export default function ForYouBrowPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
-                href="https://booking.naver.com/booking/13/bizes/1611738"
+                href="https://booking.naver.com/booking/13/bizes/0000000"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 text-sm tracking-wide text-background transition hover:opacity-90"
@@ -122,7 +122,7 @@ export default function ForYouBrowPage() {
                 네이버 예약하기
               </a>
               <a
-                href="tel:010-9451-6583"
+                href="tel:010-1234-5678"
                 className="inline-flex items-center justify-center rounded-full border border-line px-8 py-4 text-sm tracking-wide text-foreground transition hover:bg-line/40"
               >
                 전화 문의
@@ -208,7 +208,7 @@ export default function ForYouBrowPage() {
               <h2 className="mt-4 font-serif text-4xl md:text-5xl">시술 메뉴</h2>
             </div>
             <a
-              href="https://booking.naver.com/booking/13/bizes/1611738"
+              href="https://booking.naver.com/booking/13/bizes/0000000"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden text-sm text-muted hover:text-foreground sm:inline"
@@ -330,9 +330,9 @@ export default function ForYouBrowPage() {
                   주소
                 </dt>
                 <dd className="text-[15px] leading-relaxed">
-                  서울특별시 노원구 동일로204가길 34
+                  서울특별시 강남구 테헤란로 123
                   <br />
-                  씨앤미 복합빌딩 138 · 139호
+                  샘플 빌딩 5F
                 </dd>
               </div>
               <div>
@@ -340,7 +340,7 @@ export default function ForYouBrowPage() {
                   지하철
                 </dt>
                 <dd className="text-[15px]">
-                  하계역 1번 출구에서 도보 450m
+                  강남역 3번 출구에서 도보 5분
                 </dd>
               </div>
               <div>
@@ -357,7 +357,7 @@ export default function ForYouBrowPage() {
                 </dt>
                 <dd className="text-[15px]">
                   <a
-                    href="tel:010-9451-6583"
+                    href="tel:010-1234-5678"
                     className="underline-offset-4 hover:underline"
                   >
                     010 · 9451 · 6583
@@ -438,7 +438,7 @@ export default function ForYouBrowPage() {
           </p>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
             <a
-              href="https://booking.naver.com/booking/13/bizes/1611738"
+              href="https://booking.naver.com/booking/13/bizes/0000000"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full bg-foreground px-10 py-4 text-sm tracking-wide text-background transition hover:opacity-90"
@@ -446,7 +446,7 @@ export default function ForYouBrowPage() {
               네이버 예약하기
             </a>
             <a
-              href="tel:010-9451-6583"
+              href="tel:010-1234-5678"
               className="inline-flex items-center justify-center rounded-full border border-foreground/20 px-10 py-4 text-sm tracking-wide text-foreground transition hover:bg-foreground hover:text-background"
             >
               전화 문의
@@ -470,7 +470,7 @@ export default function ForYouBrowPage() {
                 href="https://www.instagram.com/for_u_brow"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="For U Brow 인스타그램 @for_u_brow"
+                aria-label="For U Brow 인스타그램 @sample_brow"
                 className="mt-8 inline-flex h-12 w-12 items-center justify-center rounded-full border border-background/30 text-background/80 transition hover:bg-background hover:text-foreground"
               >
                 <svg
@@ -494,9 +494,9 @@ export default function ForYouBrowPage() {
                 Visit
               </div>
               <p className="mt-4 text-[13px] leading-relaxed text-background/85">
-                서울특별시 노원구 동일로204가길 34
+                서울특별시 강남구 테헤란로 123
                 <br />
-                씨앤미 복합빌딩 138 · 139호
+                샘플 빌딩 5F
                 <br />
                 <span className="text-xs text-background/60">
                   하계역 1번 출구 · 450m
@@ -518,8 +518,8 @@ export default function ForYouBrowPage() {
               </div>
               <ul className="mt-4 space-y-2 text-[13px] text-background/85">
                 <li>
-                  <a href="tel:010-9451-6583" className="hover:underline">
-                    010-9451-6583
+                  <a href="tel:010-1234-5678" className="hover:underline">
+                    010-1234-5678
                   </a>
                 </li>
                 <li>
@@ -529,12 +529,12 @@ export default function ForYouBrowPage() {
                     rel="noopener noreferrer"
                     className="hover:underline"
                   >
-                    @for_u_brow
+                    @sample_brow
                   </a>
                 </li>
               </ul>
               <a
-                href="https://booking.naver.com/booking/13/bizes/1611738"
+                href="https://booking.naver.com/booking/13/bizes/0000000"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center justify-center rounded-full bg-background px-6 py-3 text-xs tracking-wide text-foreground transition hover:opacity-90"
