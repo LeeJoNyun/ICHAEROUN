@@ -105,15 +105,19 @@ export function ProjectsSection() {
 
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-center bg-black py-20">
-      <div className="max-w-7xl w-full px-8 relative z-10">
-        <h2 className="text-5xl md:text-7xl font-black text-white mb-20 tracking-tight">OUR WORKS</h2>
+      <div className="w-full px-8 relative z-10">
+        <div className="flex justify-center mb-20">
+          <h2 className="text-5xl md:text-7xl font-black text-white tracking-tight">OUR WORKS</h2>
+        </div>
 
-        {/* Drag Slider */}
-        <div
-          ref={sliderRef}
-          className="flex gap-8 overflow-x-auto pb-8 scroll-smooth"
-          style={{ cursor: 'grab', scrollBehavior: 'smooth' }}
-        >
+        {/* Drag Slider - Centered Container */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-6xl">
+            <div
+              ref={sliderRef}
+              className="flex gap-8 overflow-x-auto pb-8 scroll-smooth"
+              style={{ cursor: 'grab', scrollBehavior: 'smooth' }}
+            >
           {WORKS.map((work) => {
             const ThumbnailComponent = work.Thumbnail
             return (
@@ -164,6 +168,8 @@ export function ProjectsSection() {
               </div>
             )
           })}
+            </div>
+          </div>
         </div>
 
         {/* Drag Hint */}
