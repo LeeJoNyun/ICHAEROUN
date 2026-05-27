@@ -1,0 +1,39 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: #f7f5ef;
+  --foreground: #1c2748;
+  --muted: #6b7392;
+  --line: #d9dce6;
+  --accent: #1c2748;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-serif: "Tenor Sans", "Pretendard Variable", Pretendard, serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "ss02";
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 디스플레이용 — Tenor Sans는 라틴만 있어 한글은 Pretendard로 자동 폴백 */
+.font-serif {
+  font-family: var(--font-serif);
+  font-feature-settings: normal;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
