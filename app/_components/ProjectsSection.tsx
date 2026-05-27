@@ -61,17 +61,32 @@ const WORKS = [
 export function ProjectsSection() {
   const sliderRef = useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = useState(false)
-  const [showHint, setShowHint] = useState(true)
+  const [currentSlide, setCurrentSlide] = useState(0)
   const startXRef = useRef(0)
   const scrollLeftRef = useRef(0)
+
+  const handleNav = (direction: 'prev' | 'next') => {
+    if (!sliderRef.current) return
+    const slider = sliderRef.current
+    const cardWidth = slider.offsetWidth + 32 // card width + gap
+    const newScrollLeft = direction === 'next'
+      ? slider.scrollLeft + cardWidth
+      : slider.scrollLeft - cardWidth
+    slider.scrollTo({ left: newScrollLeft, behavior: 'smooth' })
+  }
 
   useEffect(() => {
     const slider = sliderRef.current
     if (!slider) return
 
+    const handleScroll = () => {
+      const cardWidth = slider.offsetWidth + 32
+      const slide = Math.round(slider.scrollLeft / cardWidth)
+      setCurrentSlide(Math.min(slide, WORKS.length - 1))
+    }
+
     const handleMouseDown = (e: MouseEvent) => {
       setIsDragging(true)
-      setShowHint(false)
       startXRef.current = e.pageX - slider.offsetLeft
       scrollLeftRef.current = slider.scrollLeft
       slider.style.cursor = 'grabbing'
@@ -90,11 +105,13 @@ export function ProjectsSection() {
       slider.style.cursor = 'grab'
     }
 
+    slider.addEventListener('scroll', handleScroll)
     slider.addEventListener('mousedown', handleMouseDown)
     window.addEventListener('mousemove', handleMouseMove)
     window.addEventListener('mouseup', handleMouseUp)
 
     return () => {
+      slider.removeEventListener('scroll', handleScroll)
       slider.removeEventListener('mousedown', handleMouseDown)
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseup', handleMouseUp)
@@ -108,19 +125,21 @@ export function ProjectsSection() {
           <h2 className="text-5xl md:text-7xl font-black text-white tracking-tight">OUR WORKS</h2>
         </div>
 
-        {/* Drag Slider - Centered Container */}
+        {/* Slider Container with Navigation */}
         <div className="flex justify-center">
           <div className="w-full max-w-6xl">
+            {/* Main Slider */}
             <div
               ref={sliderRef}
-              className="flex gap-8 overflow-x-auto pb-8 scroll-smooth"
-              style={{ cursor: 'grab', scrollBehavior: 'smooth' }}
+              className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+              style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandatory' }}
             >
           {WORKS.map((work) => {
             return (
-              <div
+              <Link
                 key={work.id}
-                className="relative min-w-full h-[55vh] overflow-hidden rounded-lg group shrink-0"
+                href={work.href}
+                className="relative min-w-full h-[55vh] overflow-hidden rounded-lg group shrink-0 block cursor-pointer"
                 style={{
                   backgroundImage: `url(${work.screenshot})`,
                   backgroundSize: 'cover',
@@ -162,25 +181,59 @@ export function ProjectsSection() {
                     )}
                   </div>
                 </div>
-              </div>
+              </Link>
             )
           })}
             </div>
+
+            {/* Navigation Controls */}
+            <div className="flex items-center justify-between mt-12">
+              {/* Left Arrow */}
+              <button
+                onClick={() => handleNav('prev')}
+                disabled={currentSlide === 0}
+                className="p-3 rounded-full border border-white/30 text-white/60 hover:text-white hover:border-white/60 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                aria-label="Previous project"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* Slide Counter */}
+              <div className="flex items-center gap-4">
+                <div className="text-sm font-light text-white/60 tracking-widest">
+                  {String(currentSlide + 1).padStart(2, '0')} / {String(WORKS.length).padStart(2, '0')}
+                </div>
+
+                {/* Progress Bar */}
+                <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-white transition-all duration-300"
+                    style={{ width: `${((currentSlide + 1) / WORKS.length) * 100}%` }}
+                  />
+                </div>
+              </div>
+
+              {/* Right Arrow */}
+              <button
+                onClick={() => handleNav('next')}
+                disabled={currentSlide === WORKS.length - 1}
+                className="p-3 rounded-full border border-white/30 text-white/60 hover:text-white hover:border-white/60 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                aria-label="Next project"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Hint */}
+            <div className="mt-6 text-center text-sm text-white/40 tracking-widest">
+              DRAG OR USE ARROWS TO NAVIGATE
+            </div>
           </div>
         </div>
-
-        {/* Drag Hint */}
-        {showHint && (
-          <div className="drag-hint">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            DRAG TO EXPLORE
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-        )}
       </div>
     </section>
   )
