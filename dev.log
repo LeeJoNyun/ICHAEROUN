@@ -2032,3 +2032,5 @@ https://nextjs.org/docs/messages/module-not-found
  GET / 200 in 54ms (next.js: 11ms, application-code: 44ms)
  GET / 200 in 47ms (next.js: 15ms, application-code: 31ms)
 ✓ Compiled in 32ms
+✓ Compiled in 45ms
+✓ Compiled in 40ms

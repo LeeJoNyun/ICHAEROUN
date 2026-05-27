@@ -66,7 +66,7 @@ export function QuoteForm() {
       {/* 폼 섹션 */}
       <div className="max-w-2xl mx-auto space-y-8">
         {/* 프로젝트 타입 */}
-        <div ref={projectTypeRef} className="relative">
+        <div ref={projectTypeRef} className="relative space-y-2">
           <label className="block text-sm font-medium text-white mb-2">
             어떤 종류의 사이트를 만들고 싶으신가요?
           </label>
@@ -87,6 +87,9 @@ export function QuoteForm() {
               <path d="M1 1L6 6L11 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </button>
+          <p className="text-xs text-white/50">
+            {getProjectTypeDescription(params.projectType as keyof typeof PROJECT_TYPES)}
+          </p>
 
           {isProjectTypeOpen && (
             <div className="absolute top-full left-0 right-0 mt-1 bg-slate-900 border border-white/20 rounded shadow-lg z-10">
@@ -122,29 +125,39 @@ export function QuoteForm() {
 
         {/* 추가 페이지 */}
         {params.projectType !== 'custom' && (
-          <div>
-            <label className="block text-sm font-medium text-white mb-2">
-              기본 페이지 외 추가 페이지 수
-            </label>
-            <div className="flex items-center gap-3">
-              <input
-                type="number"
-                min="0"
-                value={params.additionalPages}
-                onChange={handleAdditionalPagesChange}
-                className="w-20 px-2 py-2 text-sm bg-white/10 border border-white/20 rounded text-white focus:outline-none focus:border-white/40"
-              />
-              <span className="text-white/60 text-sm">개</span>
+          <div className="space-y-3">
+            <div>
+              <label className="block text-sm font-medium text-white mb-2">
+                추가 페이지 수
+              </label>
+              <div className="flex items-center gap-3">
+                <input
+                  type="number"
+                  min="0"
+                  value={params.additionalPages}
+                  onChange={handleAdditionalPagesChange}
+                  className="w-20 px-2 py-2 text-sm bg-white/10 border border-white/20 rounded text-white focus:outline-none focus:border-white/40"
+                />
+                <span className="text-white/60 text-sm">개</span>
+              </div>
             </div>
-            <p className="text-xs text-white/40 mt-1">
-              기본: {PROJECT_TYPES[params.projectType as keyof typeof PROJECT_TYPES].pages}페이지
-            </p>
+            <div className="bg-white/5 border border-white/10 rounded-lg p-3 space-y-2">
+              <p className="text-xs font-medium text-white/80">
+                ✓ 기본 포함: {PROJECT_TYPES[params.projectType as keyof typeof PROJECT_TYPES].pages}페이지
+              </p>
+              <p className="text-xs text-white/60">
+                기본 페이지는 홈페이지, 소개, 서비스 등 필수 페이지입니다. 추가 페이지가 필요하면 위에 개수를 입력하세요. (예: 블로그, 포트폴리오, 갤러리 등)
+              </p>
+            </div>
           </div>
         )}
 
         {/* 추가 기능 */}
-        <div>
-          <label className="block text-sm font-medium text-white mb-4">필요한 추가 기능</label>
+        <div className="space-y-3">
+          <label className="block text-sm font-medium text-white">필요한 추가 기능 (선택사항)</label>
+          <p className="text-xs text-white/50">
+            위의 기본 구성에 추가로 필요한 기능을 선택하세요. 선택하지 않아도 됩니다.
+          </p>
           <div className="space-y-3">
             {Object.entries(ADDON_PRICING).map(([key, price]) => (
               <label key={key} className="flex items-center gap-3 cursor-pointer group">
@@ -154,10 +167,13 @@ export function QuoteForm() {
                   onChange={() => handleAddonToggle(key as keyof typeof ADDON_PRICING)}
                   className="w-5 h-5 rounded border-white/30 text-white accent-white cursor-pointer"
                 />
-                <span className="flex-1 text-white/80 group-hover:text-white transition">
-                  {getAddonLabel(key)}
-                </span>
-                <span className="text-white/60 text-sm">+{formatPrice(price)}</span>
+                <div className="flex-1">
+                  <span className="text-white/80 group-hover:text-white transition block">
+                    {getAddonLabel(key)}
+                  </span>
+                  <span className="text-xs text-white/40">{getAddonDescription(key)}</span>
+                </div>
+                <span className="text-white/60 text-sm whitespace-nowrap">+{formatPrice(price)}</span>
               </label>
             ))}
           </div>
@@ -228,4 +244,30 @@ function getAddonLabel(key: string): string {
     seo: 'SEO 최적화',
   }
   return labels[key as keyof typeof labels] || key
+}
+
+function getProjectTypeDescription(projectType: keyof typeof PROJECT_TYPES): string {
+  const descriptions: Record<string, string> = {
+    website: '기업 홈페이지, 회사 소개 사이트',
+    landing: '상품 판매, 이벤트 홍보용 단일 페이지',
+    ecommerce: '상품 판매 쇼핑몰 (상품 등록, 장바구니, 결제 등)',
+    service: '서비스 소개, 설명 중심 사이트',
+    portfolio: '포트폴리오, 작업 갤러리 (디자이너, 사진작가, 개발자 등)',
+    booking: '예약, 시간 관리 플랫폼 (병원, 미용실, 강좌 등)',
+    community: '사용자 커뮤니티, 포럼, 소셜 기능',
+    custom: '위의 타입에 없는 맞춤형 프로젝트 (페이지당 요금 계산)',
+  }
+  return descriptions[projectType] || ''
+}
+
+function getAddonDescription(key: string): string {
+  const descriptions = {
+    payment: '온라인 결제 기능 추가',
+    userSystem: '회원 가입, 로그인, 마이페이지',
+    admin: '상품/컨텐츠 관리자 대시보드',
+    apiIntegration: '소셜 로그인, 배송 연동 등',
+    realTimeChat: '고객 상담, 실시간 메시지 기능',
+    seo: '검색 엔진 최적화 (구글/네이버 상위 노출)',
+  }
+  return descriptions[key as keyof typeof descriptions] || ''
 }
