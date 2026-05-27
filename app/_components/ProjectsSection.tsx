@@ -2,14 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import gsap from 'gsap'
-import {
-  BrowThumbnail,
-  ModoThumbnail,
-  CoreAdminThumbnail,
-  BloomThumbnail,
-  NovaTechThumbnail,
-} from './ProjectThumbnail'
 
 const WORKS = [
   {
@@ -20,7 +14,7 @@ const WORKS = [
     description: '12년차 대표원장의 프라이빗 브로우샵 서비스 소개 사이트',
     color: 'from-amber-900/40 to-orange-900/40',
     href: '/forubrow',
-    Thumbnail: BrowThumbnail,
+    screenshot: '/screenshots/1-forubrow.png',
   },
   {
     id: 2,
@@ -29,7 +23,8 @@ const WORKS = [
     category: '이커머스 · 쇼핑몰',
     description: '프리미엄 가구 브랜드 전자상거래 플랫폼. 제품 검색, 장바구니, 결제까지 완벽한 쇼핑 경험.',
     color: 'from-slate-800/40 to-gray-900/40',
-    Thumbnail: ModoThumbnail,
+    href: '/modo',
+    screenshot: '/screenshots/2-modo.png',
   },
   {
     id: 3,
@@ -38,7 +33,8 @@ const WORKS = [
     category: 'SaaS · 관리시스템',
     description: 'B2B SaaS 플랫폼의 관리자 대시보드. 실시간 분석, 사용자 관리, 결제 처리까지 통합.',
     color: 'from-indigo-900/40 to-purple-900/40',
-    Thumbnail: CoreAdminThumbnail,
+    href: '/core-admin',
+    screenshot: '/screenshots/3-core-admin.png',
   },
   {
     id: 4,
@@ -47,7 +43,8 @@ const WORKS = [
     category: '라이프스타일 · 예약',
     description: '꽃배달 서비스 플랫폼. 상품 등록, 예약 시스템, 배송 추적 기능 구현.',
     color: 'from-rose-900/40 to-pink-900/40',
-    Thumbnail: BloomThumbnail,
+    href: '/bloom',
+    screenshot: '/screenshots/4-bloom.png',
   },
   {
     id: 5,
@@ -56,7 +53,8 @@ const WORKS = [
     category: 'IT · 스타트업',
     description: '혁신적인 AI 기반 소프트웨어 회사의 회사 소개 및 제품 데모 페이지.',
     color: 'from-cyan-900/40 to-blue-900/40',
-    Thumbnail: NovaTechThumbnail,
+    href: '/nova-tech',
+    screenshot: '/screenshots/5-nova-tech.png',
   },
 ]
 
@@ -119,7 +117,6 @@ export function ProjectsSection() {
               style={{ cursor: 'grab', scrollBehavior: 'smooth' }}
             >
           {WORKS.map((work) => {
-            const ThumbnailComponent = work.Thumbnail
             return (
               <div
                 key={work.id}
@@ -129,8 +126,13 @@ export function ProjectsSection() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${work.color}`} />
 
                 {/* Thumbnail Preview */}
-                <div className="absolute top-8 right-8 w-40 h-48 opacity-60 group-hover:opacity-100 transition-opacity z-10">
-                  <ThumbnailComponent />
+                <div className="absolute top-8 right-8 w-40 h-48 opacity-60 group-hover:opacity-100 transition-opacity z-10 rounded-lg overflow-hidden">
+                  <Image
+                    src={work.screenshot}
+                    alt={work.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
 
                 {/* Content Overlay */}

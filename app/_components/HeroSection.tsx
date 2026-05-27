@@ -106,16 +106,30 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-linear-to-br from-black via-slate-900 to-black">
+      {/* Background Gradient Blobs */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{
+        background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)',
+        filter: 'blur(60px)',
+      }} />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none" style={{
+        background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)',
+        filter: 'blur(60px)',
+      }} />
+      <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full pointer-events-none" style={{
+        background: 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)',
+        filter: 'blur(50px)',
+      }} />
+
       {/* Canvas Particle Background */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none"
-        style={{ opacity: 0.6 }}
+        style={{ opacity: 0.5 }}
       />
 
       {/* Grid Background */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-5">
         <div
           className="w-full h-full"
           style={{
@@ -130,7 +144,7 @@ export function HeroSection() {
         ref={orbRef}
         className="absolute w-96 h-96 rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%)',
           filter: 'blur(40px)',
           top: '50%',
           left: '50%',
