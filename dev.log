@@ -2043,3 +2043,298 @@ https://nextjs.org/docs/messages/module-not-found
  GET /quote 200 in 63ms (next.js: 16ms, application-code: 48ms)
 ✓ Compiled in 37ms
 ✓ Compiled in 47ms
+ GET / 200 in 66ms (next.js: 10ms, application-code: 56ms)
+[browser] In HTML, <a> cannot be a descendant of <a>.
+This will cause a hydration error.
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+        <SegmentViewNode type="page" pagePath="page.tsx">
+          <SegmentTrieNode>
+          <Home>
+            <main className="bg-black">
+              <div>
+              <div>
+              <div id="works">
+                <ProjectsSection>
+                  <section className="relative m...">
+                    <div className="w-full px-...">
+                      <div>
+                      <div className="flex justi...">
+                        <div className="w-full max...">
+                          <div ref={{current:null}} className="flex gap-8..." style={{cursor:"grab", ...}}>
+                            <LinkComponent href="/forubrow" className="relative m..." style={{...}}>
+>                             <a
+>                               className="relative min-w-full h-[55vh] overflow-hidden rounded-lg group shrink-0 bloc..."
+>                               style={{backgroundImage:"url(/scree...",backgroundSize:"cover",backgroundPosition:"center"}}
+>                               ref={function}
+>                               onClick={function onClick}
+>                               onMouseEnter={function onMouseEnter}
+>                               onTouchStart={function onTouchStart}
+>                               href="/forubrow"
+>                             >
+                                <div>
+                                <div className="absolute i...">
+                                  <div>
+                                  <div className="space-y-4">
+                                    <div>
+                                    <LinkComponent href="/forubrow" className="inline-fle...">
+>                                     <a
+>                                       className="inline-flex items-center gap-2 text-white/60 hover:text-white trans..."
+>                                       ref={function}
+>                                       onClick={function onClick}
+>                                       onMouseEnter={function onMouseEnter}
+>                                       onTouchStart={function onTouchStart}
+>                                       href="/forubrow"
+>                                     >
+                            ...
+                          ...
+              ...
+        ...
+      ...
+ 
+[browser] <a> cannot contain a nested <a>.
+See this log for the ancestor stack trace. 
+[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+      <SegmentViewNode type="page" pagePath="page.tsx">
+        <SegmentTrieNode>
+        <Home>
+          <main className="bg-black">
+            <div>
+            <div>
+            <div id="works">
+              <ProjectsSection>
+                <section className="relative m...">
+                  <div className="w-full px-...">
+                    <div>
+                    <div className="flex justi...">
+                      <div className="w-full max...">
+                        <div ref={{current:null}} className="flex gap-8..." style={{cursor:"grab", ...}}>
+                          <LinkComponent href="/forubrow" className="relative m..." style={{...}}>
+                            <a className="relative m..." style={{...}} ref={function} onClick={function onClick} ...>
+                              <div>
++                             <div className="absolute inset-0 flex flex-col justify-between p-12 z-10 overflow-hidden">
+                          ...
+                        ...
+            ...
+      ...
+
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at div (<anonymous>)
+    at <unknown> (app/_components/ProjectsSection.tsx:203:17)
+    at Array.map (<anonymous>)
+    at ProjectsSection (app/_components/ProjectsSection.tsx:187:18)
+    at Home (app/page.tsx:17:9)
+  201 |
+  202 |                 {/* Content Overlay */}
+> 203 |                 <div className="absolute inset-0 flex flex-col justify-between p-12 z-10 ...
+      |                 ^
+  204 |                   {/* Top Section */}
+  205 |                   <div>
+  206 |                     <div className="text-white/60 text-xs uppercase tracking-widest font-...
+✓ Compiled in 45ms
+[browser] Uncaught ReferenceError: useRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:59:21)
+    at Set.forEach (<anonymous>)
+    at Home (app/page.tsx:17:9)
+  57 |
+  58 | export function ProjectsSection() {
+> 59 |   const sliderRef = useRef<HTMLDivElement>(null)
+     |                     ^
+  60 |   const [isDragging, setIsDragging] = useState(false)
+  61 |   const [currentSlide, setCurrentSlide] = useState(0)
+  62 |   const [isHovering, setIsHovering] = useState(false)
+[browser] Uncaught ReferenceError: useRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:59:21)
+    at Set.forEach (<anonymous>)
+    at Home (app/page.tsx:17:9)
+  57 |
+  58 | export function ProjectsSection() {
+> 59 |   const sliderRef = useRef<HTMLDivElement>(null)
+     |                     ^
+  60 |   const [isDragging, setIsDragging] = useState(false)
+  61 |   const [currentSlide, setCurrentSlide] = useState(0)
+  62 |   const [isHovering, setIsHovering] = useState(false)
+[browser] Uncaught ReferenceError: useRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:59:21)
+    at Set.forEach (<anonymous>)
+    at Home (app/page.tsx:17:9)
+  57 |
+  58 | export function ProjectsSection() {
+> 59 |   const sliderRef = useRef<HTMLDivElement>(null)
+     |                     ^
+  60 |   const [isDragging, setIsDragging] = useState(false)
+  61 |   const [currentSlide, setCurrentSlide] = useState(0)
+  62 |   const [isHovering, setIsHovering] = useState(false)
+[browser] Uncaught ReferenceError: useRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:59:21)
+    at Set.forEach (<anonymous>)
+    at Home (app/page.tsx:17:9)
+  57 |
+  58 | export function ProjectsSection() {
+> 59 |   const sliderRef = useRef<HTMLDivElement>(null)
+     |                     ^
+  60 |   const [isDragging, setIsDragging] = useState(false)
+  61 |   const [currentSlide, setCurrentSlide] = useState(0)
+  62 |   const [isHovering, setIsHovering] = useState(false)
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+✓ Compiled in 13ms
+[browser] Uncaught ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+    at Set.forEach (<anonymous>)
+    at Home (app/page.tsx:17:9)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             >
+[browser] Uncaught ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+    at Set.forEach (<anonymous>)
+    at Home (app/page.tsx:17:9)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             >
+[browser] Uncaught ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+    at Set.forEach (<anonymous>)
+    at Home (app/page.tsx:17:9)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             >
+[browser] Uncaught ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+    at Set.forEach (<anonymous>)
+    at Home (app/page.tsx:17:9)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             >
+⨯ ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             > {
+  digest: '1679695875'
+}
+⨯ ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             > {
+  digest: '1679695875'
+}
+⨯ ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             > {
+  digest: '1679695875'
+}
+⨯ ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             > {
+  digest: '1679695875'
+}
+ GET / 500 in 171ms (next.js: 38ms, application-code: 133ms)
+ GET / 500 in 173ms (next.js: 55ms, application-code: 118ms)
+ GET / 500 in 173ms (next.js: 62ms, application-code: 111ms)
+ GET / 500 in 153ms (next.js: 108ms, application-code: 45ms)
+[browser] Uncaught ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+    at Home (app/page.tsx:17:9)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             >
+[browser] Uncaught ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+    at Home (app/page.tsx:17:9)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             >
+[browser] Uncaught ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+    at Home (app/page.tsx:17:9)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             >
+[browser] Uncaught ReferenceError: sliderRef is not defined
+    at ProjectsSection (app/_components/ProjectsSection.tsx:72:20)
+    at Home (app/page.tsx:17:9)
+  70 |             {/* Main Slider */}
+  71 |             <div
+> 72 |               ref={sliderRef}
+     |                    ^
+  73 |               className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
+  74 |               style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandat...
+  75 |             >
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+✓ Compiled in 38ms
+ GET / 200 in 128ms (next.js: 1488µs, application-code: 126ms)
+ GET / 200 in 119ms (next.js: 3ms, application-code: 116ms)
+ GET / 200 in 127ms (next.js: 25ms, application-code: 102ms)
+ GET / 200 in 94ms (next.js: 7ms, application-code: 87ms)
+✓ Compiled in 24ms

@@ -1,9 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
-import gsap from 'gsap'
 
 const WORKS = [
   {
@@ -59,228 +56,63 @@ const WORKS = [
 ]
 
 export function ProjectsSection() {
-  const sliderRef = useRef<HTMLDivElement>(null)
-  const [isDragging, setIsDragging] = useState(false)
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isHovering, setIsHovering] = useState(false)
-  const startXRef = useRef(0)
-  const scrollLeftRef = useRef(0)
-  const autoplayIntervalRef = useRef<NodeJS.Timeout | null>(null)
-
-  const resetAutoplay = () => {
-    if (autoplayIntervalRef.current) {
-      clearInterval(autoplayIntervalRef.current)
-    }
-
-    if (isHovering || isDragging) return
-
-    autoplayIntervalRef.current = setInterval(() => {
-      if (!sliderRef.current) return
-      const slider = sliderRef.current
-      const cardWidth = slider.offsetWidth + 32
-      const isAtEnd = currentSlide >= WORKS.length - 1
-
-      if (isAtEnd) {
-        slider.scrollTo({ left: 0, behavior: 'smooth' })
-      } else {
-        const newScrollLeft = slider.scrollLeft + cardWidth
-        slider.scrollTo({ left: newScrollLeft, behavior: 'smooth' })
-      }
-    }, 5000)
-  }
-
-  const handleNav = (direction: 'prev' | 'next') => {
-    if (!sliderRef.current) return
-    const slider = sliderRef.current
-    const cardWidth = slider.offsetWidth + 32 // card width + gap
-    const newScrollLeft = direction === 'next'
-      ? slider.scrollLeft + cardWidth
-      : slider.scrollLeft - cardWidth
-    slider.scrollTo({ left: newScrollLeft, behavior: 'smooth' })
-    resetAutoplay()
-  }
-
-  useEffect(() => {
-    const slider = sliderRef.current
-    if (!slider) return
-
-    const handleScroll = () => {
-      const cardWidth = slider.offsetWidth + 32
-      const slide = Math.round(slider.scrollLeft / cardWidth)
-      setCurrentSlide(Math.min(slide, WORKS.length - 1))
-    }
-
-    const handleMouseDown = (e: MouseEvent) => {
-      setIsDragging(true)
-      startXRef.current = e.pageX - slider.offsetLeft
-      scrollLeftRef.current = slider.scrollLeft
-      slider.style.cursor = 'grabbing'
-      if (autoplayIntervalRef.current) {
-        clearInterval(autoplayIntervalRef.current)
-      }
-    }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isDragging) return
-      e.preventDefault()
-      const x = e.pageX - slider.offsetLeft
-      const walk = (x - startXRef.current) * 1.5
-      slider.scrollLeft = scrollLeftRef.current - walk
-    }
-
-    const handleMouseUp = () => {
-      setIsDragging(false)
-      slider.style.cursor = 'grab'
-      resetAutoplay()
-    }
-
-    const handleMouseEnter = () => {
-      setIsHovering(true)
-      if (autoplayIntervalRef.current) {
-        clearInterval(autoplayIntervalRef.current)
-      }
-    }
-
-    const handleMouseLeave = () => {
-      setIsHovering(false)
-      resetAutoplay()
-    }
-
-    slider.addEventListener('scroll', handleScroll)
-    slider.addEventListener('mousedown', handleMouseDown)
-    slider.addEventListener('mouseenter', handleMouseEnter)
-    slider.addEventListener('mouseleave', handleMouseLeave)
-    window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('mouseup', handleMouseUp)
-
-    resetAutoplay()
-
-    return () => {
-      slider.removeEventListener('scroll', handleScroll)
-      slider.removeEventListener('mousedown', handleMouseDown)
-      slider.removeEventListener('mouseenter', handleMouseEnter)
-      slider.removeEventListener('mouseleave', handleMouseLeave)
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseup', handleMouseUp)
-      if (autoplayIntervalRef.current) {
-        clearInterval(autoplayIntervalRef.current)
-      }
-    }
-  }, [isDragging, isHovering, currentSlide])
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-center bg-black py-20">
+    <section className="relative w-full bg-black py-20">
       <div className="w-full px-8 relative z-10">
         <div className="flex justify-center mb-20">
           <h2 className="text-5xl md:text-7xl font-black text-white tracking-tight">OUR WORKS</h2>
         </div>
 
-        {/* Slider Container with Navigation */}
+        {/* Grid Container */}
         <div className="flex justify-center">
-          <div className="w-full max-w-6xl">
-            {/* Main Slider */}
-            <div
-              ref={sliderRef}
-              className="flex gap-8 overflow-x-auto pb-4 scroll-smooth"
-              style={{ cursor: 'grab', scrollBehavior: 'smooth', scrollSnapType: 'x mandatory' }}
-            >
-          {WORKS.map((work) => {
-            return (
-              <Link
-                key={work.id}
-                href={work.href}
-                className="relative min-w-full h-[55vh] overflow-hidden rounded-lg group shrink-0 block cursor-pointer"
-                style={{
-                  backgroundImage: `url(${work.screenshot})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              >
-                {/* Dark Overlay with Gradient */}
-                <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/70 to-black/60 group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/50 transition-all duration-300 z-0" />
+          <div className="w-full max-w-7xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {WORKS.map((work) => (
+                <Link
+                  key={work.id}
+                  href={work.href}
+                  className="relative h-96 overflow-hidden rounded-lg group cursor-pointer"
+                  style={{
+                    backgroundImage: `url(${work.screenshot})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                >
+                  {/* Dark Overlay with Gradient */}
+                  <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/70 to-black/60 group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/50 transition-all duration-300 z-0" />
 
-                {/* Content Overlay */}
-                <div className="absolute inset-0 flex flex-col justify-between p-12 z-10 overflow-hidden">
-                  {/* Top Section */}
-                  <div>
-                    <div className="text-white/60 text-xs uppercase tracking-widest font-light mb-4">
-                      {work.category}
-                    </div>
-                  </div>
-
-                  {/* Bottom Section */}
-                  <div className="space-y-4">
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <h3 className="text-4xl font-black text-white mb-2">{work.title}</h3>
-                        <p className="text-white/80 text-sm leading-relaxed max-w-xl">{work.description}</p>
-                      </div>
-                      <div className="text-white/30 text-8xl font-black group-hover:text-white/50 transition-colors">
-                        {work.number}
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-between p-8 z-10 overflow-hidden">
+                    {/* Top Section */}
+                    <div>
+                      <div className="text-white/60 text-xs uppercase tracking-widest font-light">
+                        {work.category}
                       </div>
                     </div>
 
-                    {/* Link */}
-                    {work.href && (
-                      <Link
-                        href={work.href}
-                        className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors group/link"
-                      >
-                        View Case Study <span className="group-hover/link:translate-x-1 transition-transform">→</span>
-                      </Link>
-                    )}
+                    {/* Bottom Section */}
+                    <div className="space-y-3">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <h3 className="text-3xl font-black text-white mb-1">{work.title}</h3>
+                          <p className="text-white/80 text-sm leading-relaxed">{work.description}</p>
+                        </div>
+                        <div className="text-white/30 text-6xl font-black group-hover:text-white/50 transition-colors shrink-0">
+                          {work.number}
+                        </div>
+                      </div>
+
+                      {/* Link */}
+                      {work.href && (
+                        <div className="inline-flex items-center gap-2 text-white/60 group-hover:text-white transition-colors">
+                          View Case Study <span className="group-hover:translate-x-1 transition-transform">→</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            )
-          })}
-            </div>
-
-            {/* Navigation Controls */}
-            <div className="flex items-center justify-between mt-12">
-              {/* Left Arrow */}
-              <button
-                onClick={() => handleNav('prev')}
-                disabled={currentSlide === 0}
-                className="p-3 rounded-full border border-white/30 text-white/60 hover:text-white hover:border-white/60 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
-                aria-label="Previous project"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              {/* Slide Counter */}
-              <div className="flex items-center gap-4">
-                <div className="text-sm font-light text-white/60 tracking-widest">
-                  {String(currentSlide + 1).padStart(2, '0')} / {String(WORKS.length).padStart(2, '0')}
-                </div>
-
-                {/* Progress Bar */}
-                <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-white transition-all duration-300"
-                    style={{ width: `${((currentSlide + 1) / WORKS.length) * 100}%` }}
-                  />
-                </div>
-              </div>
-
-              {/* Right Arrow */}
-              <button
-                onClick={() => handleNav('next')}
-                disabled={currentSlide === WORKS.length - 1}
-                className="p-3 rounded-full border border-white/30 text-white/60 hover:text-white hover:border-white/60 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
-                aria-label="Next project"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Hint */}
-            <div className="mt-6 text-center text-sm text-white/40 tracking-widest">
-              DRAG OR USE ARROWS TO NAVIGATE
+                </Link>
+              ))}
             </div>
           </div>
         </div>
