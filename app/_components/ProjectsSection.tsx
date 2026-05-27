@@ -121,22 +121,17 @@ export function ProjectsSection() {
               <div
                 key={work.id}
                 className="relative min-w-[70vw] h-[60vh] overflow-hidden rounded-lg group"
+                style={{
+                  backgroundImage: `url(${work.screenshot})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
               >
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${work.color}`} />
-
-                {/* Thumbnail Preview */}
-                <div className="absolute top-8 right-8 w-40 h-48 opacity-60 group-hover:opacity-100 transition-opacity z-10 rounded-lg overflow-hidden">
-                  <Image
-                    src={work.screenshot}
-                    alt={work.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+                {/* Dark Overlay with Gradient */}
+                <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/70 to-black/60 group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/50 transition-all duration-300" />
 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300 flex flex-col justify-between p-12">
+                <div className="absolute inset-0 flex flex-col justify-between p-12">
                   {/* Top Section */}
                   <div>
                     <div className="text-white/60 text-xs uppercase tracking-widest font-light mb-4">
