@@ -174,10 +174,10 @@ export function HeroSection() {
         </p>
 
         <button
-          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' })}
           className="px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-sm uppercase tracking-widest font-light"
         >
-          Start A Project →
+          견적서 받기 →
         </button>
       </div>
 

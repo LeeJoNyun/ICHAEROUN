@@ -16,7 +16,9 @@ export default function Home() {
       <div id="works">
         <ProjectsSection />
       </div>
-      <QuoteCtaSection />
+      <div id="quote">
+        <QuoteCtaSection />
+      </div>
       <div id="contact">
         <FooterSection />
       </div>
