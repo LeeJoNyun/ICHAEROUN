@@ -16,11 +16,25 @@ export function Nav() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    window.addEventListener('loaderComplete', () => {
+    const showNav = () => {
       gsap.to('nav', { opacity: 1, duration: 0.8, ease: 'power2.inOut' })
       setIsVisible(true)
-    })
-  }, [])
+    }
+
+    window.addEventListener('loaderComplete', showNav)
+
+    // Show nav immediately after a short delay if loaderComplete doesn't fire
+    const fallbackTimer = setTimeout(() => {
+      if (!isVisible) {
+        showNav()
+      }
+    }, 500)
+
+    return () => {
+      window.removeEventListener('loaderComplete', showNav)
+      clearTimeout(fallbackTimer)
+    }
+  }, [isVisible])
 
   return (
     <nav

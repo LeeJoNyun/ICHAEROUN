@@ -1,3 +1,4 @@
+import { Nav } from './_components/Nav'
 import { HeroSection } from './_components/HeroSection'
 import { ServicesSection } from './_components/ServicesSection'
 import { ProjectsSection } from './_components/ProjectsSection'
@@ -6,7 +7,9 @@ import { FooterSection } from './_components/FooterSection'
 
 export default function Home() {
   return (
-    <main className="bg-black">
+    <>
+      <Nav />
+      <main className="bg-black">
       <div id="intro">
         <HeroSection />
       </div>
@@ -23,5 +26,6 @@ export default function Home() {
         <FooterSection />
       </div>
     </main>
+    </>
   )
 }

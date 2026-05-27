@@ -2338,3 +2338,114 @@ https://react.dev/link/hydration-mismatch
  GET / 200 in 127ms (next.js: 25ms, application-code: 102ms)
  GET / 200 in 94ms (next.js: 7ms, application-code: 87ms)
 ✓ Compiled in 24ms
+[browser] ./app/page.tsx:30:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  28 |     </main>
+  29 |   )
+> 30 | }
+     | ^
+  31 |
+
+Parsing ecmascript source code failed 
+[browser] ./app/page.tsx:30:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  28 |     </main>
+  29 |   )
+> 30 | }
+     | ^
+  31 |
+
+Parsing ecmascript source code failed 
+[browser] ./app/page.tsx:30:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  28 |     </main>
+  29 |   )
+> 30 | }
+     | ^
+  31 |
+
+Parsing ecmascript source code failed 
+✓ Compiled in 116ms
+ GET / 200 in 78ms (next.js: 21ms, application-code: 56ms)
+ GET / 200 in 66ms (next.js: 31ms, application-code: 35ms)
+ GET / 200 in 38ms (next.js: 11ms, application-code: 26ms)
+ GET / 200 in 30ms (next.js: 13ms, application-code: 16ms)
+✓ Compiled in 38ms
+[browser] The final argument passed to useEffect changed size between renders. The order and size of this array must remain constant.
+
+Previous: []
+Incoming: [false] 
+    at Nav (app/_components/Nav.tsx:18:12)
+    at Set.forEach (<anonymous>)
+  16 |   const [isVisible, setIsVisible] = useState(false)
+  17 |
+> 18 |   useEffect(() => {
+     |            ^
+  19 |     const showNav = () => {
+  20 |       gsap.to('nav', { opacity: 1, duration: 0.8, ease: 'power2.inOut' })
+  21 |       setIsVisible(true) (app/_components/Nav.tsx:18:12)
+[browser] The final argument passed to useEffect changed size between renders. The order and size of this array must remain constant.
+
+Previous: []
+Incoming: [false] 
+    at Nav (app/_components/Nav.tsx:18:12)
+    at Set.forEach (<anonymous>)
+  16 |   const [isVisible, setIsVisible] = useState(false)
+  17 |
+> 18 |   useEffect(() => {
+     |            ^
+  19 |     const showNav = () => {
+  20 |       gsap.to('nav', { opacity: 1, duration: 0.8, ease: 'power2.inOut' })
+  21 |       setIsVisible(true) (app/_components/Nav.tsx:18:12)
+[browser] The final argument passed to useEffect changed size between renders. The order and size of this array must remain constant.
+
+Previous: []
+Incoming: [false] 
+    at Nav (app/_components/Nav.tsx:18:12)
+    at Set.forEach (<anonymous>)
+  16 |   const [isVisible, setIsVisible] = useState(false)
+  17 |
+> 18 |   useEffect(() => {
+     |            ^
+  19 |     const showNav = () => {
+  20 |       gsap.to('nav', { opacity: 1, duration: 0.8, ease: 'power2.inOut' })
+  21 |       setIsVisible(true) (app/_components/Nav.tsx:18:12)
+[browser] The final argument passed to useEffect changed size between renders. The order and size of this array must remain constant.
+
+Previous: []
+Incoming: [false] 
+    at Nav (app/_components/Nav.tsx:18:12)
+    at Set.forEach (<anonymous>)
+  16 |   const [isVisible, setIsVisible] = useState(false)
+  17 |
+> 18 |   useEffect(() => {
+     |            ^
+  19 |     const showNav = () => {
+  20 |       gsap.to('nav', { opacity: 1, duration: 0.8, ease: 'power2.inOut' })
+  21 |       setIsVisible(true) (app/_components/Nav.tsx:18:12)
+[browser] The final argument passed to useEffect changed size between renders. The order and size of this array must remain constant.
+
+Previous: []
+Incoming: [false] 
+    at Nav (app/_components/Nav.tsx:18:12)
+    at Set.forEach (<anonymous>)
+  16 |   const [isVisible, setIsVisible] = useState(false)
+  17 |
+> 18 |   useEffect(() => {
+     |            ^
+  19 |     const showNav = () => {
+  20 |       gsap.to('nav', { opacity: 1, duration: 0.8, ease: 'power2.inOut' })
+  21 |       setIsVisible(true) (app/_components/Nav.tsx:18:12)
+[browser] The final argument passed to useEffect changed size between renders. The order and size of this array must remain constant.
+
+Previous: []
+Incoming: [false] 
+    at Nav (app/_components/Nav.tsx:18:12)
+    at Set.forEach (<anonymous>)
+  16 |   const [isVisible, setIsVisible] = useState(false)
+  17 |
+> 18 |   useEffect(() => {
+     |            ^
+  19 |     const showNav = () => {
+  20 |       gsap.to('nav', { opacity: 1, duration: 0.8, ease: 'power2.inOut' })
+  21 |       setIsVisible(true) (app/_components/Nav.tsx:18:12)
