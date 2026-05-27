@@ -120,7 +120,7 @@ export function ProjectsSection() {
             return (
               <div
                 key={work.id}
-                className="relative min-w-[70vw] h-[60vh] overflow-hidden rounded-lg group"
+                className="relative min-w-[45vw] h-[55vh] overflow-hidden rounded-lg group"
                 style={{
                   backgroundImage: `url(${work.screenshot})`,
                   backgroundSize: 'cover',
