@@ -2040,3 +2040,6 @@ https://nextjs.org/docs/messages/module-not-found
 ✓ Compiled in 47ms
  GET /quote 200 in 101ms (next.js: 8ms, application-code: 94ms)
 ✓ Compiled in 53ms
+ GET /quote 200 in 63ms (next.js: 16ms, application-code: 48ms)
+✓ Compiled in 37ms
+✓ Compiled in 47ms

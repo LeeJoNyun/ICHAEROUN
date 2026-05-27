@@ -87,7 +87,7 @@ export function QuoteForm() {
               <path d="M1 1L6 6L11 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </button>
-          <p className="text-xs text-white/50">
+          <p className="text-xs text-white/50 whitespace-pre-line">
             {getProjectTypeDescription(params.projectType as keyof typeof PROJECT_TYPES)}
           </p>
 
@@ -248,14 +248,14 @@ function getAddonLabel(key: string): string {
 
 function getProjectTypeDescription(projectType: keyof typeof PROJECT_TYPES): string {
   const descriptions: Record<string, string> = {
-    website: '기업 홈페이지, 회사 소개 사이트',
-    landing: '상품 판매, 이벤트 홍보용 단일 페이지',
-    ecommerce: '상품 판매 쇼핑몰 (상품 등록, 장바구니, 결제 등)',
-    service: '서비스 소개, 설명 중심 사이트',
-    portfolio: '포트폴리오, 작업 갤러리 (디자이너, 사진작가, 개발자 등)',
-    booking: '예약, 시간 관리 플랫폼 (병원, 미용실, 강좌 등)',
-    community: '사용자 커뮤니티, 포럼, 소셜 기능',
-    custom: '위의 타입에 없는 맞춤형 프로젝트 (페이지당 요금 계산)',
+    website: '기업 홈페이지, 회사 소개 사이트\n기본 페이지: 홈, 소개, 서비스/제품, 포트폴리오/사례, 연락처',
+    landing: '상품 판매, 이벤트 홍보용 단일 페이지\n기본 구성: 헤더, 영웅섹션, 기능/혜택소개, CTA, 푸터',
+    ecommerce: '상품 판매 쇼핑몰\n기본 페이지: 홈, 상품목록, 상품상세, 장바구니, 결제, 마이페이지, 주문관리',
+    service: '서비스 소개, 설명 중심 사이트\n기본 페이지: 홈, 서비스소개, 가격표, 문의/예약, FAQ, 연락처',
+    portfolio: '포트폴리오, 작업 갤러리\n기본 페이지: 홈, 소개, 작업갤러리, 작업상세, 연락처',
+    booking: '예약, 시간 관리 플랫폼\n기본 페이지: 홈, 예약, 일정관리, 예약확인, 결제, 마이페이지, 관리자',
+    community: '사용자 커뮤니티, 포럼, 소셜 기능\n기본 페이지: 홈, 게시판, 상세글보기, 마이페이지, 메시지, 관리자',
+    custom: '위의 타입에 없는 맞춤형 프로젝트\n페이지당 요금으로 계산되며, 자유롭게 구성 가능합니다',
   }
   return descriptions[projectType] || ''
 }
