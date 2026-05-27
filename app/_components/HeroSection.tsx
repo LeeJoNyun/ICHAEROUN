@@ -107,6 +107,17 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-linear-to-br from-black via-slate-900 to-black">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: 'url(/image.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.4,
+        }}
+      />
+
       {/* Background Gradient Blobs */}
       <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{
         background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)',
