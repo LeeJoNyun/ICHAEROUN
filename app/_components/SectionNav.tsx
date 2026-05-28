@@ -13,20 +13,30 @@ export function SectionNav() {
   const [currentSection, setCurrentSection] = useState(0)
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = SECTIONS.map(s => document.getElementById(s.id))
-      const scrollY = window.scrollY + window.innerHeight / 2
+    const observers = SECTIONS.map((section, index) => {
+      const element = document.getElementById(section.id)
+      if (!element) return null
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (sections[i] && sections[i]!.offsetTop <= scrollY) {
-          setCurrentSection(i)
-          break
-        }
-      }
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setCurrentSection(index)
+            }
+          })
+        },
+        { threshold: 0.05 }
+      )
+
+      observer.observe(element)
+      return observer
+    })
+
+    return () => {
+      observers.forEach((observer) => {
+        if (observer) observer.disconnect()
+      })
     }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleClick = () => {
