@@ -2449,3 +2449,444 @@ Incoming: [false]
   19 |     const showNav = () => {
   20 |       gsap.to('nav', { opacity: 1, duration: 0.8, ease: 'power2.inOut' })
   21 |       setIsVisible(true) (app/_components/Nav.tsx:18:12)
+[browser] ./app/page.tsx:30:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  28 |     </main>
+  29 |   )
+> 30 | }
+     | ^
+  31 |
+
+Parsing ecmascript source code failed 
+[browser] The final argument passed to useEffect changed size between renders. The order and size of this array must remain constant.
+
+Previous: []
+Incoming: [false] 
+    at Nav (app/_components/Nav.tsx:18:12)
+    at Set.forEach (<anonymous>)
+  16 |   const [isVisible, setIsVisible] = useState(false)
+  17 |
+> 18 |   useEffect(() => {
+     |            ^
+  19 |     const showNav = () => {
+  20 |       gsap.to('nav', { opacity: 1, duration: 0.8, ease: 'power2.inOut' })
+  21 |       setIsVisible(true) (app/_components/Nav.tsx:18:12)
+[browser] The final argument passed to useEffect changed size between renders. The order and size of this array must remain constant.
+
+Previous: []
+Incoming: [false] 
+    at Nav (app/_components/Nav.tsx:18:12)
+    at Set.forEach (<anonymous>)
+  16 |   const [isVisible, setIsVisible] = useState(false)
+  17 |
+> 18 |   useEffect(() => {
+     |            ^
+  19 |     const showNav = () => {
+  20 |       gsap.to('nav', { opacity: 1, duration: 0.8, ease: 'power2.inOut' })
+  21 |       setIsVisible(true) (app/_components/Nav.tsx:18:12)
+ GET / 200 in 70ms (next.js: 21ms, application-code: 50ms)
+ GET / 200 in 43ms (next.js: 2ms, application-code: 41ms)
+✓ Compiled in 160ms
+✓ Compiled in 91ms
+ GET / 200 in 71ms (next.js: 13ms, application-code: 58ms)
+✓ Compiled in 88ms
+✓ Compiled in 46ms
+✓ Compiled in 97ms
+ GET / 200 in 244ms (next.js: 100ms, application-code: 144ms)
+ GET / 200 in 116ms (next.js: 56ms, application-code: 60ms)
+ GET / 200 in 117ms (next.js: 33ms, application-code: 84ms)
+ GET / 200 in 117ms (next.js: 50ms, application-code: 67ms)
+ GET / 200 in 77ms (next.js: 1094µs, application-code: 76ms)
+ GET / 200 in 92ms (next.js: 1642µs, application-code: 90ms)
+ GET / 200 in 104ms (next.js: 15ms, application-code: 89ms)
+ GET / 200 in 92ms (next.js: 10ms, application-code: 83ms)
+ GET / 200 in 117ms (next.js: 4ms, application-code: 113ms)
+ GET / 200 in 135ms (next.js: 12ms, application-code: 123ms)
+ GET / 200 in 111ms (next.js: 9ms, application-code: 101ms)
+ GET / 200 in 118ms (next.js: 6ms, application-code: 112ms)
+ GET / 200 in 116ms (next.js: 18ms, application-code: 99ms)
+ GET / 200 in 101ms (next.js: 9ms, application-code: 92ms)
+ GET / 200 in 82ms (next.js: 3ms, application-code: 79ms)
+ GET / 200 in 83ms (next.js: 16ms, application-code: 67ms)
+ GET / 200 in 82ms (next.js: 25ms, application-code: 57ms)
+ GET / 200 in 52ms (next.js: 3ms, application-code: 49ms)
+ GET / 200 in 52ms (next.js: 16ms, application-code: 36ms)
+ GET / 200 in 161ms (next.js: 27ms, application-code: 134ms)
+✓ Compiled in 58ms
+✓ Compiled in 133ms
+ GET / 200 in 153ms (next.js: 70ms, application-code: 83ms)
+ GET / 200 in 151ms (next.js: 94ms, application-code: 56ms)
+ GET / 200 in 148ms (next.js: 105ms, application-code: 43ms)
+ GET / 200 in 46ms (next.js: 16ms, application-code: 30ms)
+ GET / 200 in 19ms (next.js: 5ms, application-code: 14ms)
+ GET / 200 in 263ms (next.js: 1894µs, application-code: 261ms)
+ GET / 200 in 206ms (next.js: 3ms, application-code: 203ms)
+ GET / 200 in 228ms (next.js: 32ms, application-code: 197ms)
+ GET / 200 in 183ms (next.js: 5ms, application-code: 178ms)
+✓ Compiled in 34ms
+ GET / 200 in 84ms (next.js: 28ms, application-code: 57ms)
+✓ Compiled in 69ms
+✓ Compiled in 21ms
+✓ Compiled in 191ms
+ GET / 200 in 194ms (next.js: 85ms, application-code: 109ms)
+ GET / 200 in 169ms (next.js: 104ms, application-code: 65ms)
+ GET / 200 in 51ms (next.js: 16ms, application-code: 35ms)
+ GET / 200 in 52ms (next.js: 3ms, application-code: 49ms)
+ GET / 200 in 30ms (next.js: 9ms, application-code: 22ms)
+ GET / 200 in 249ms (next.js: 4ms, application-code: 245ms)
+ GET / 200 in 174ms (next.js: 8ms, application-code: 166ms)
+ GET / 200 in 185ms (next.js: 11ms, application-code: 174ms)
+ GET / 200 in 189ms (next.js: 28ms, application-code: 161ms)
+ GET / 200 in 68ms (next.js: 18ms, application-code: 50ms)
+✓ Compiled in 73ms
+[browser] Uncaught ReferenceError: NAV_ITEMS is not defined
+    at Nav (app/_components/Nav.tsx:41:12)
+    at Set.forEach (<anonymous>)
+    at RootLayout (app/layout.tsx:33:9)
+  39 |
+  40 |         <div className="flex gap-8 items-center">
+> 41 |           {NAV_ITEMS.map(({ number, label, section, isLink }) => (
+     |            ^
+  42 |             isLink ? (
+  43 |               <Link
+  44 |                 key={number}
+[browser] Uncaught ReferenceError: NAV_ITEMS is not defined
+    at Nav (app/_components/Nav.tsx:41:12)
+    at Set.forEach (<anonymous>)
+    at RootLayout (app/layout.tsx:33:9)
+  39 |
+  40 |         <div className="flex gap-8 items-center">
+> 41 |           {NAV_ITEMS.map(({ number, label, section, isLink }) => (
+     |            ^
+  42 |             isLink ? (
+  43 |               <Link
+  44 |                 key={number}
+[browser] Uncaught ReferenceError: NAV_ITEMS is not defined
+    at Nav (app/_components/Nav.tsx:41:12)
+    at Set.forEach (<anonymous>)
+    at RootLayout (app/layout.tsx:33:9)
+  39 |
+  40 |         <div className="flex gap-8 items-center">
+> 41 |           {NAV_ITEMS.map(({ number, label, section, isLink }) => (
+     |            ^
+  42 |             isLink ? (
+  43 |               <Link
+  44 |                 key={number}
+[browser] Uncaught ReferenceError: NAV_ITEMS is not defined
+    at Nav (app/_components/Nav.tsx:41:12)
+    at Set.forEach (<anonymous>)
+    at RootLayout (app/layout.tsx:33:9)
+  39 |
+  40 |         <div className="flex gap-8 items-center">
+> 41 |           {NAV_ITEMS.map(({ number, label, section, isLink }) => (
+     |            ^
+  42 |             isLink ? (
+  43 |               <Link
+  44 |                 key={number}
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+✓ Compiled in 23ms
+ GET / 200 in 321ms (next.js: 84ms, application-code: 236ms)
+ GET / 200 in 322ms (next.js: 118ms, application-code: 204ms)
+ GET / 200 in 328ms (next.js: 168ms, application-code: 160ms)
+ GET / 200 in 179ms (next.js: 33ms, application-code: 146ms)
+ GET /core-admin 200 in 55ms (next.js: 32ms, application-code: 23ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /quote 200 in 31ms (next.js: 15ms, application-code: 16ms)
+✓ Compiled in 45ms
+✓ Compiled in 17ms
+✓ Compiled in 20ms
+✓ Compiled in 53ms
+ GET / 200 in 52ms (next.js: 9ms, application-code: 42ms)
+ GET / 200 in 47ms (next.js: 5ms, application-code: 42ms)
+ GET / 200 in 53ms (next.js: 3ms, application-code: 51ms)
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+ GET / 200 in 304ms (next.js: 90ms, application-code: 214ms)
+ GET / 200 in 304ms (next.js: 111ms, application-code: 193ms)
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+ GET / 200 in 309ms (next.js: 129ms, application-code: 180ms)
+ GET / 200 in 306ms (next.js: 142ms, application-code: 164ms)
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+ GET / 200 in 201ms (next.js: 3ms, application-code: 198ms)
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+ GET / 200 in 215ms (next.js: 16ms, application-code: 199ms)
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+ GET / 200 in 215ms (next.js: 14ms, application-code: 201ms)
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+ GET / 200 in 236ms (next.js: 15ms, application-code: 222ms)
+ GET / 200 in 219ms (next.js: 1890µs, application-code: 217ms)
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+⨯ ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </> {
+  digest: '3570795838'
+}
+ GET / 200 in 255ms (next.js: 44ms, application-code: 210ms)
+ GET / 200 in 197ms (next.js: 6ms, application-code: 192ms)
+ GET / 200 in 196ms (next.js: 18ms, application-code: 177ms)
+ GET / 200 in 163ms (next.js: 12ms, application-code: 152ms)
+ GET / 200 in 163ms (next.js: 23ms, application-code: 140ms)
+ GET / 200 in 132ms (next.js: 11ms, application-code: 122ms)
+ GET / 200 in 141ms (next.js: 18ms, application-code: 123ms)
+ GET / 200 in 137ms (next.js: 18ms, application-code: 119ms)
+ GET / 200 in 137ms (next.js: 26ms, application-code: 111ms)
+ GET / 200 in 152ms (next.js: 4ms, application-code: 148ms)
+ GET / 200 in 153ms (next.js: 19ms, application-code: 134ms)
+[browser] Uncaught ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </>
+[browser] Uncaught ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </>
+[browser] Uncaught ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </>
+[browser] Uncaught ReferenceError: FooterSection is not defined
+    at Home (app/page.tsx:27:10)
+  25 |       </div>
+  26 |       <div id="contact">
+> 27 |         <FooterSection />
+     |          ^
+  28 |       </div>
+  29 |     </main>
+  30 |     </>
+ GET / 200 in 255ms (next.js: 9ms, application-code: 246ms)
+ GET / 200 in 260ms (next.js: 1985µs, application-code: 258ms)
+ GET / 200 in 268ms (next.js: 16ms, application-code: 251ms)
+ GET / 200 in 240ms (next.js: 19ms, application-code: 221ms)
+✓ Compiled in 21ms
+ GET / 200 in 77ms (next.js: 27ms, application-code: 50ms)
+ GET / 200 in 80ms (next.js: 9ms, application-code: 71ms)
+ GET / 200 in 81ms (next.js: 48ms, application-code: 34ms)
+ GET / 200 in 39ms (next.js: 16ms, application-code: 23ms)
+✓ Compiled in 20ms
+✓ Compiled in 19ms
+ GET / 200 in 49ms (next.js: 12ms, application-code: 37ms)

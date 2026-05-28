@@ -174,19 +174,28 @@ export function HeroSection() {
         </p>
 
         <button
-          onClick={() => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' })}
-          className="px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-sm uppercase tracking-widest font-light"
+          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          className="group px-10 py-4 border border-white text-white hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 text-sm uppercase tracking-widest font-light cursor-pointer"
         >
-          견적서 받기 →
+          <span className="flex items-center gap-2">
+            견적서 받기
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </span>
         </button>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
+      {/* Click to Scroll Indicator */}
+      <button
+        onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce group cursor-pointer hover:opacity-100 opacity-80 transition-opacity"
+      >
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-white/60 text-xs uppercase tracking-widest font-light group-hover:text-white transition-colors">Click</span>
+          <svg className="w-6 h-6 text-white group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+      </button>
     </section>
   )
 }
