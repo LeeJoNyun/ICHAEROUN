@@ -11,7 +11,7 @@ export default function QuoteLayout({
   return (
     <>
       {/* 메인으로 돌아가기 버튼 */}
-      <div className="fixed top-8 left-8 z-50">
+      <div className="fixed top-8 left-8 z-50 print:hidden">
         <Link
           href="/"
           className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white hover:text-blue-400 transition-colors"

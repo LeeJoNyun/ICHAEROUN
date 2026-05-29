@@ -64,7 +64,7 @@ export function QuoteForm() {
   return (
     <div className="space-y-12">
       {/* 폼 섹션 */}
-      <div className="max-w-2xl mx-auto space-y-8">
+      <div className="max-w-2xl mx-auto space-y-8 print:hidden">
         {/* 프로젝트 타입 */}
         <div ref={projectTypeRef} className="relative space-y-2">
           <label className="block text-sm font-medium text-white mb-2">
