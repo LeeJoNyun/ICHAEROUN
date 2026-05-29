@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import gsap from 'gsap'
 
 
 export function Nav() {
   const [isVisible, setIsVisible] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const showNav = () => {
@@ -29,13 +31,24 @@ export function Nav() {
     }
   }, [isVisible])
 
+  // quote 페이지에서는 Nav 숨김
+  if (pathname.startsWith('/quote')) {
+    return null
+  }
+
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 backdrop-blur-sm"
       style={{ opacity: 0 }}
     >
       <div className="max-w-full px-8 py-6 flex items-center justify-between">
-        <div className="text-sm font-black tracking-widest text-white uppercase">ICHAE</div>
+        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <img
+            src="/main-logo.webp"
+            alt="ICHAE"
+            className="h-20 w-auto"
+          />
+        </Link>
 
         <Link
           href="/quote"

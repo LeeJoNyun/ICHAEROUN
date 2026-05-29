@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 
 const CATEGORIES = [
@@ -170,19 +170,53 @@ const WORKS = [
   },
 ]
 
+const SLIDES_PER_VIEW = 3
+
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState('booking')
+  const [currentPage, setCurrentPage] = useState(0)
+  const [totalPages, setTotalPages] = useState(1)
   const sliderRef = useRef<HTMLDivElement>(null)
 
   const filteredWorks = WORKS.filter(work => work.categoryType === selectedCategory)
 
+  useEffect(() => {
+    const pages = Math.ceil(filteredWorks.length / SLIDES_PER_VIEW)
+    setTotalPages(pages)
+    setCurrentPage(0)
+  }, [selectedCategory, filteredWorks.length])
+
   const scroll = (direction: 'left' | 'right') => {
     if (sliderRef.current) {
-      const scrollAmount = 400
-      if (direction === 'left') {
-        sliderRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
+      const isAtEnd = currentPage >= totalPages - 1
+      const isAtStart = currentPage === 0
+      const currentCategoryIndex = CATEGORIES.findIndex(cat => cat.id === selectedCategory)
+
+      if (direction === 'right' && isAtEnd) {
+        // 마지막 페이지에서 next: 다음 탭 또는 첫 탭으로 순환
+        const nextCategoryIndex = (currentCategoryIndex + 1) % CATEGORIES.length
+        setSelectedCategory(CATEGORIES[nextCategoryIndex].id)
+        setCurrentPage(0)
+      } else if (direction === 'left' && isAtStart) {
+        // 첫 페이지에서 prev: 이전 탭 또는 마지막 탭의 마지막 페이지로 순환
+        const prevCategoryIndex = (currentCategoryIndex - 1 + CATEGORIES.length) % CATEGORIES.length
+        setSelectedCategory(CATEGORIES[prevCategoryIndex].id)
+        // 다음 렌더링에서 totalPages를 알 수 있도록 별도 처리 필요
+        setTimeout(() => {
+          const prevFiltered = WORKS.filter(work => work.categoryType === CATEGORIES[prevCategoryIndex].id)
+          const prevTotalPages = Math.ceil(prevFiltered.length / SLIDES_PER_VIEW)
+          setCurrentPage(prevTotalPages - 1)
+        }, 0)
       } else {
-        sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+        const cardWidth = 400
+        const scrollAmount = cardWidth
+        const newPage = direction === 'right' ? currentPage + 1 : currentPage - 1
+
+        if (newPage >= 0 && newPage < totalPages) {
+          setCurrentPage(newPage)
+          const scrollTarget = newPage * scrollAmount
+          sliderRef.current.scrollTo({ left: scrollTarget, behavior: 'smooth' })
+        }
       }
     }
   }
@@ -202,7 +236,10 @@ export function ProjectsSection() {
               {CATEGORIES.map(cat => (
                 <button
                   key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
+                  onClick={() => {
+                    setSelectedCategory(cat.id)
+                    setCurrentPage(0)
+                  }}
                   className={`whitespace-nowrap text-sm font-semibold transition-all duration-300 pb-2 border-b-2 ${
                     selectedCategory === cat.id
                       ? 'text-white border-b-blue-400'
@@ -234,7 +271,7 @@ export function ProjectsSection() {
                       }}
                     >
                       {/* Dark Overlay */}
-                      <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/70 to-black/60 group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/50 transition-all duration-300 z-0" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/60 group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/50 transition-all duration-300 z-0" />
 
                       {/* Content */}
                       <div className="absolute inset-0 flex flex-col justify-between p-8 z-10">
@@ -268,8 +305,8 @@ export function ProjectsSection() {
                 )}
               </div>
 
-              {/* Navigation Arrows */}
-              {filteredWorks.length > 1 && (
+              {/* Navigation Arrows & Page Indicator */}
+              {filteredWorks.length > 0 && (
                 <>
                   <button
                     onClick={() => scroll('left')}
@@ -279,6 +316,7 @@ export function ProjectsSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
+
                   <button
                     onClick={() => scroll('right')}
                     className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-20 text-white/60 hover:text-white transition-colors"
@@ -287,6 +325,13 @@ export function ProjectsSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </button>
+
+                  {/* Page Indicator */}
+                  {totalPages > 1 && (
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-12 text-white/60 text-sm">
+                      {currentPage + 1} / {totalPages}
+                    </div>
+                  )}
                 </>
               )}
             </div>
